@@ -14,29 +14,21 @@ variable "security_group_description" {
 # security group rule
 #
 
-variable "security_group_rule_direction" {
-  description = "Whether this rule is for inward or outward traffic"
-  default     = "ingress"
-}
-
-variable "security_group_rule_ethertype" {
-  description = "IPv4 or IPv6?"
-  default     = "IPv4"
-}
-
-variable "security_group_rule_protocol" {
-  description = "Which protocol this rule should match? tcp? udp?"
-}
-
-variable "security_group_rule_port_range_min" {
-  description = "First port that should be allowed"
-}
-
-variable "security_group_rule_port_range_max" {
-  description = "Last port that should be allowed"
-}
-
-variable "security_group_rule_remote_ip_prefix" {
-  description = "Should this rule only match traffic from a certain IP or IP range"
-  default     = "0.0.0.0/0"
+variable "security_group_rules" {
+  description = "List of elements, each defining a security rule"
+  type        = map(object({
+    security_group_rule_direction        = string
+    security_group_rule_ethertype        = string
+    security_group_rule_protocol         = string
+    security_group_rule_port_range_min   = number
+    security_group_rule_port_range_max   = number
+    security_group_rule_remote_ip_prefix = string
+  }))
+#  default = [
+#    {
+#      security_group_rule_direction        = "ingress"
+#      security_group_rule_ethertype        = "IPv4"
+#      security_group_rule_remote_ip_prefix = "0.0.0.0/0"
+#    }
+#  ]
 }
