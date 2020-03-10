@@ -24,11 +24,4 @@ variable "security_group_rules" {
     security_group_rule_port_range_max   = number
     security_group_rule_remote_ip_prefix = string
   }))
-#  default = [
-#    {
-#      security_group_rule_direction        = "ingress"
-#      security_group_rule_ethertype        = "IPv4"
-#      security_group_rule_remote_ip_prefix = "0.0.0.0/0"
-#    }
-#  ]
 }
