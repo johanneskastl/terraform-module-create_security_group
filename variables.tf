@@ -11,6 +11,22 @@ variable "security_group_description" {
 }
 
 #
+# Allow the user to disable ICMP IPv4
+#
+variable "disable_ping_ipv4" {
+  description = ""
+  default     = false
+}
+
+#
+# Allow the user to disable ICMP IPv6
+#
+variable "disable_ping_ipv6" {
+  description = ""
+  default     = false
+}
+
+#
 # security group rule
 #
 

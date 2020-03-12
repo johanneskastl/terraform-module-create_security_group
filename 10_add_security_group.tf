@@ -10,6 +10,10 @@ resource "openstack_networking_secgroup_v2" "create_security_group" {
 # allow ICMP (to have working pings...) on IPv4
 #
 resource "openstack_networking_secgroup_rule_v2" "security_group_rule_icmp_ipv4" {
+
+  # enable unless variable disable_ping_ipv4 is true
+  count = var.disable_ping_ipv4 ? 0 : 1
+
   direction         = "ingress"
   ethertype         = "IPv4"
   protocol          = "icmp"
@@ -20,6 +24,10 @@ resource "openstack_networking_secgroup_rule_v2" "security_group_rule_icmp_ipv4"
 # allow ICMP (to have working pings...) on IPv6
 #
 resource "openstack_networking_secgroup_rule_v2" "security_group_rule_icmp_ipv6" {
+
+  # enable unless variable disable_ping_ipv6 is true
+  count = var.disable_ping_ipv6 ? 0 : 1
+
   direction         = "ingress"
   ethertype         = "IPv6"
   protocol          = "icmp"
