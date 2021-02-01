@@ -30,7 +30,7 @@ resource "openstack_networking_secgroup_rule_v2" "security_group_rule_icmp_ipv6"
 
   direction         = "ingress"
   ethertype         = "IPv6"
-  protocol          = "icmp"
+  protocol          = "ipv6-icmp"
   security_group_id = openstack_networking_secgroup_v2.create_security_group.id
 }
 
